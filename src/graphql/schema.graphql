@@ -1,0 +1,33 @@
+input CreateInput {
+	author: String!
+	content: String!
+}
+
+type Note {
+  id: ID!
+  content: String!
+  author: String!
+  createdAt: String!
+	updatedAt: String
+}
+
+type ListNotesResult {
+	total: String
+	items: [Note]
+}
+
+type Mutation {
+	createNote(note: CreateInput!): Note
+	deleteNote(id: ID!): ID
+	updateNote(id: ID! content: String!): Note
+}
+
+type Query {
+	getNote(id: ID!): Note
+  listNotes: ListNotesResult
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}
